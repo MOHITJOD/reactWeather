@@ -2,6 +2,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import { useState } from 'react';
+
 export default function SearchBox({update}){
     let [city, setCity]=useState("");
     let [error, seterror]= useState(false);
@@ -9,7 +10,7 @@ export default function SearchBox({update}){
         setCity(ev.target.value)   
     }
     async function weatherData(){
-       try{ const apiKey = '67b77a58d4362e1f7111826fe9e3a1ff';
+       try{ const apiKey = import.meta.env.VITE_API_KEY ;
         let response = await fetch( `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
         let Jres = await response.json();
         // console.log(Jres);
